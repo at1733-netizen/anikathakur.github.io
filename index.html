@@ -3,130 +3,354 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anika Thakur | Personal Website</title>
+    <title>Anika Thakur | Finance Portfolio</title>
     <style>
+        :root {
+            --primary: #0a192f;
+            --accent: #0052cc;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-            padding: 2rem 1rem;
         }
+
+        /* Container */
         .container {
-            max-width: 800px;
+            max-width: 950px;
             margin: 0 auto;
-            background: #ffffff;
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 2.5rem 1.5rem;
         }
+
+        /* Header / Hero Section */
         header {
-            text-align: center;
-            border-bottom: 2px solid #eaeaea;
-            padding-bottom: 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
             margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
+
         .profile-img {
-            width: 160px;
-            height: 160px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 3px solid var(--accent);
+            flex-shrink: 0;
         }
-        h1 {
+
+        .header-content h1 {
             font-size: 2.2rem;
-            color: #111;
-            margin-bottom: 0.5rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
         }
-        .subtitle {
-            color: #666;
+
+        .header-content .subtitle {
             font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
         }
+
+        .header-content .bio {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Section Layout */
         section {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
-        h2 {
-            font-size: 1.4rem;
-            color: #0366d6;
-            margin-bottom: 1rem;
+
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        p {
-            margin-bottom: 1rem;
+
+        /* Experience & Project Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
-        ul {
-            list-style-type: square;
-            padding-left: 1.2rem;
-        }
-        li {
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 0.5rem;
         }
-        .links a {
-            color: #0366d6;
-            text-decoration: none;
-            margin-right: 1rem;
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .card-subtitle {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .card ul {
+            padding-left: 1.25rem;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .card li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Grid Layout for Skills & Education */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        /* Skill Badges */
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .tag {
+            background: #eef2ff;
+            color: var(--accent);
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 600;
         }
-        .links a:hover {
-            text-decoration: underline;
-        }
+
         footer {
             text-align: center;
-            color: #888;
-            font-size: 0.9rem;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #eaeaea;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 650px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .card-header {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
+        
+        <!-- Header / Bio -->
         <header>
             <img src="Anika.Thakur_Headshot.png" alt="Anika Thakur" class="profile-img">
-            <h1>Anika Thakur</h1>
-            <p class="subtitle">Student & Developer</p>
+            <div class="header-content">
+                <h1>Anika Thakur</h1>
+                <p class="subtitle">B.S. in Finance Student at Rutgers Business School</p>
+                <p class="bio">Passionate about equity research, valuation, and private markets. Currently analyzing global PE/VC developments and evaluating corporate investment drivers[cite: 4].</p>
+                <div class="contact-links">
+                    <a href="mailto:anika.thakur2029@gmail.com" class="btn btn-primary">Email Me</a>
+                    <a href="https://github.com/yourusername" target="_blank" class="btn btn-outline">GitHub Profile</a>
+                    <a href="tel:6023278700" class="btn btn-outline">602-327-8700</a>
+                </div>
+            </div>
         </header>
 
+        <!-- Education -->
         <section>
-            <h2>About Me</h2>
-            <p>Hello! Welcome to my GitHub website. I am currently studying and working on building my skills in web development, coding, and technology.</p>
+            <h2 class="section-title">Education</h2>
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Rutgers University, Rutgers Business School</div>
+                        <div class="card-subtitle">Bachelor of Science in Finance</div>
+                    </div>
+                    <span class="card-date">Aug 2025 – Present</span>
+                </div>
+                <p><strong>Relevant Coursework:</strong> Financial Management, Financial Accounting, Statistics, Supply Chain Management[cite: 4]</p>
+            </div>
         </section>
 
+        <!-- Projects & Research -->
         <section>
-            <h2>Projects & Work</h2>
-            <ul>
-                <li><strong>Project 1:</strong> A brief description of a project or assignment you completed.</li>
-                <li><strong>Project 2:</strong> Another project or topic you've worked on recently.</li>
-            </ul>
+            <h2 class="section-title">Research & Projects</h2>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Equity Research & Valuation Project – Reformation (NYSE: REF)</div>
+                        <div class="card-subtitle">Author</div>
+                    </div>
+                    <span class="card-date">June 2026 – Aug 2026</span>
+                </div>
+                <ul>
+                    <li>Analyzed historical financial performance, unit economics, competitive positioning, and key valuation sensitivities to evaluate growth and profitability drivers[cite: 4].</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Bender Trust Project Competition</div>
+                        <div class="card-subtitle">Competitor – Teladoc Health (NYSE: TDOC)</div>
+                    </div>
+                    <span class="card-date">Oct 2025 – Dec 2025</span>
+                </div>
+                <ul>
+                    <li>Prepared a comprehensive equity research report recommending a BUY rating on NYSE:TDOC for investment committee review[cite: 4].</li>
+                    <li>Conducted industry analysis, financial statement forecasting, and constructed trading comparables valuation models to support final recommendation[cite: 4].</li>
+                </ul>
+            </div>
         </section>
 
+        <!-- Leadership & Experience -->
         <section>
-            <h2>Skills</h2>
-            <ul>
-                <li>HTML & CSS</li>
-                <li>Git & GitHub</li>
-                <li>Problem Solving & Research</li>
-            </ul>
+            <h2 class="section-title">Leadership & Experience</h2>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">LIBOR (Little Investment Bankers of Rutgers)</div>
+                        <div class="card-subtitle">Private Markets Columnist</div>
+                    </div>
+                    <span class="card-date">Aug 2025 – Present</span>
+                </div>
+                <ul>
+                    <li>Author biweekly articles on private markets, global trends, PE/VC developments, and M&A activity distributed to 2,000+ readers[cite: 4].</li>
+                    <li>Synthesize complex market transactions into clear financial insights for students and industry professionals[cite: 4].</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">DECA</div>
+                        <div class="card-subtitle">Vice President</div>
+                    </div>
+                    <span class="card-date">Aug 2022 – May 2025</span>
+                </div>
+                <ul>
+                    <li>Placed in the Top 5 out of 120 competitors in Personal Finance & Business Finance Case Competitions[cite: 4].</li>
+                    <li>Authored a 20-page international business plan on Alo Yoga, placing Top 4 out of 50 state competitors[cite: 4].</li>
+                    <li>Recruited 150+ members and organized state events leading to 30+ national qualifiers[cite: 4].</li>
+                </ul>
+            </div>
         </section>
 
-        <section>
-            <h2>Connect with Me</h2>
-            <p class="links">
-                <a href="https://github.com/yourusername" target="_blank">GitHub Profile</a>
-                <a href="mailto:your.email@example.com">Email Me</a>
-            </p>
+        <!-- Skills, Certifications & Activities Grid -->
+        <section class="grid-2">
+            <div class="card">
+                <h2 class="card-title" style="margin-bottom: 1rem;">Technical & Certifications</h2>
+                <p><strong>Tools:</strong></p>
+                <div class="tag-group" style="margin-bottom: 1rem;">
+                    <span class="tag">Bloomberg Terminal</span>
+                    <span class="tag">Microsoft Excel</span>
+                    <span class="tag">PowerPoint</span>
+                </div>
+                <p><strong>Certifications:</strong></p>
+                <div class="tag-group">
+                    <span class="tag">Bloomberg Finance Fundamentals</span>
+                    <span class="tag">MOS Certified</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title" style="margin-bottom: 1rem;">Activities & Interests</h2>
+                <p><strong>Campus Organizations:</strong></p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                    Rutgers Women in Business, Scholars of Finance, Venture Capital Club, RUValuating, BASE[cite: 4]
+                </p>
+                <p><strong>Languages:</strong> Fluent in Hindi[cite: 4]</p>
+            </div>
         </section>
 
         <footer>
-            <p>&copy; 2026 Anika Thakur. Powered by GitHub Pages.</p>
+            <p>&copy; 2026 Anika Thakur. Built for GitHub Pages.</p>
         </footer>
+
     </div>
 
 </body>
